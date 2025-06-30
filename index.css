@@ -1,0 +1,323 @@
+/* =====================
+   主页下方个人信息区样式
+   ===================== */
+.page {  display: grid;
+  grid-template-columns: 1fr 1.7fr 1fr;
+  grid-template-rows: 0.6fr 6.1fr 0.3fr 0.5fr 0.3fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  margin-top: 120px; /* 保证内容在导航栏下方 */
+  grid-template-areas:
+    "my zhu tools"
+    "my zhu tools"
+    "my . ."
+    "my . ."
+    ". . .";
+}
+
+.zhu { grid-area: zhu;
+}
+
+.tools {  display: grid;
+  grid-template-columns: 1fr 1.3fr 0.7fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "tool1 tool1 tool1"
+    "tool2 tool2 tool2"
+    "tool3 tool3 tool3";
+  grid-area: tools;
+}
+
+.tool1 { grid-area: tool1; }
+
+.tool2 { grid-area: tool2; }
+
+.tool3 { grid-area: tool3; }
+
+.my {
+  /* 现代毛玻璃卡片风格，整体居中，金色高光边框与发光 */
+  display: grid;
+  grid-template-rows: auto auto auto;
+  justify-items: center;
+  align-items: center;
+  row-gap: 18px;
+  margin-bottom: 36px;
+  margin-left: 44px;
+  padding: 44px 48px 36px 48px;
+  border-radius: 36px;
+  border: 3.5px solid #ffd700ee;
+  box-shadow:
+    0 0 0 6px #fff5 inset,
+    0 0 48px 10px #ffd70099,
+    0 8px 36px 0 rgba(31,38,135,0.13);
+  background: linear-gradient(135deg, rgba(36,39,46,0.82) 60%, rgba(255,215,0,0.07) 100%);
+  backdrop-filter: blur(22px) saturate(170%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  transition: box-shadow 0.5s cubic-bezier(.4,1.6,.6,1), border-color 0.35s, background 0.35s;
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+}
+
+/* =====================
+   专属按钮动效与扩散光晕
+   ===================== */
+
+/* Github 按钮及扩散光晕 */
+.lin.github a {
+    /* 文字主色、动画 */
+    color: #fff;
+    transition: color 0.35s cubic-bezier(.4,1.6,.6,1), background 0.35s cubic-bezier(.4,1.6,.6,1), box-shadow 0.35s cubic-bezier(.4,1.6,.6,1), text-shadow 0.35s cubic-bezier(.4,1.6,.6,1), transform 0.35s cubic-bezier(.4,1.6,.6,1);
+    position: relative;
+}
+.lin.github a::before {
+    /* 扩散光晕 */
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(0.85);
+    width: 150%;
+    height: 150%;
+    border-radius: 20px;
+    background: radial-gradient(circle, #8ec6ff66 0%, #8ec6ff33 50%, #8ec6ff11 80%, transparent 100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.55s cubic-bezier(.4,1.6,.6,1), transform 0.55s cubic-bezier(.4,1.6,.6,1);
+    z-index: -1;
+}
+.lin.github a:hover::before {
+    opacity: 0.85;
+    transform: translate(-50%,-50%) scale(1.18);
+}
+.lin.github a:hover {
+    /* 悬停主色、发光、动画 */
+    color: #8ec6ff;
+    background: rgba(80,180,255,0.13);
+    box-shadow: 0 6px 24px 0 rgba(80,180,255,0.18), 0 1.5px 8px 0 rgba(80,180,255,0.10);
+    text-shadow: 0 0 16px #8ec6ff55, 0 0 2px #8ec6ff44;
+    transform: scale(1.09) translateY(-2px) rotate(0.5deg);
+}
+
+/* Dao3 按钮及扩散光晕 */
+.lin.dao3 a {
+    color: #fff;
+    transition: color 0.35s cubic-bezier(.4,1.6,.6,1), background 0.35s cubic-bezier(.4,1.6,.6,1), box-shadow 0.35s cubic-bezier(.4,1.6,.6,1), text-shadow 0.35s cubic-bezier(.4,1.6,.6,1), transform 0.35s cubic-bezier(.4,1.6,.6,1);
+    position: relative;
+}
+.lin.dao3 a::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(0.85);
+    width: 150%;
+    height: 150%;
+    border-radius: 20px;
+    background: radial-gradient(circle, #ff980066 0%, #ff980033 50%, #ff980011 80%, transparent 100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.55s cubic-bezier(.4,1.6,.6,1), transform 0.55s cubic-bezier(.4,1.6,.6,1);
+    z-index: -1;
+}
+.lin.dao3 a:hover::before {
+    opacity: 0.85;
+    transform: translate(-50%,-50%) scale(1.18);
+}
+.lin.dao3 a:hover {
+    color: #ff9800;
+    background: rgba(255,152,0,0.13);
+    box-shadow: 0 6px 24px 0 rgba(255,152,0,0.18), 0 1.5px 8px 0 rgba(255,152,0,0.10);
+    text-shadow: 0 0 16px #ff980055, 0 0 2px #ff980044;
+    transform: scale(1.09) translateY(-2px) rotate(-1.5deg);
+}
+
+/* BiliBili 按钮及扩散光晕 */
+.lin.bili a {
+    color: #fff;
+    transition: color 0.35s cubic-bezier(.4,1.6,.6,1), background 0.35s cubic-bezier(.4,1.6,.6,1), box-shadow 0.35s cubic-bezier(.4,1.6,.6,1), text-shadow 0.35s cubic-bezier(.4,1.6,.6,1), transform 0.35s cubic-bezier(.4,1.6,.6,1);
+    position: relative;
+}
+.lin.bili a::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(0.85);
+    width: 150%;
+    height: 150%;
+    border-radius: 20px;
+    background: radial-gradient(circle, #ff80ab66 0%, #ff80ab33 50%, #ff80ab11 80%, transparent 100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.55s cubic-bezier(.4,1.6,.6,1), transform 0.55s cubic-bezier(.4,1.6,.6,1);
+    z-index: -1;
+}
+.lin.bili a:hover::before {
+    opacity: 0.85;
+    transform: translate(-50%,-50%) scale(1.18);
+}
+.lin.bili a:hover {
+    color: #ff80ab;
+    background: rgba(255,128,171,0.13);
+    box-shadow: 0 6px 24px 0 rgba(255,128,171,0.18), 0 1.5px 8px 0 rgba(255,128,171,0.10);
+    text-shadow: 0 0 16px #ff80ab55, 0 0 2px #ff80ab44;
+    transform: scale(1.09) translateY(-2px) rotate(1.5deg);
+}
+/* ===============
+   全局页面背景与字体
+   =============== */
+body {
+    min-height: 100vh; /* 页面最小高度占满视口 */
+    margin: 0;         /* 去除默认外边距 */
+    padding: 0;        /* 去除默认内边距 */
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif; /* 现代无衬线字体 */
+    background: linear-gradient(120deg, #232526 0%, #1a1a1a 100%); /* 深色渐变背景 */
+    color: #f5f6fa;    /* 全局字体颜色 */
+}
+/* 已彻底移除 body::before、body::after、.order-bg1、.order-bg2 相关内容 */
+/* ===============
+   顶部导航栏毛玻璃背景
+   =============== */
+#links{
+    /* 顶部导航栏，毛玻璃+渐变背景 */
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: linear-gradient(135deg, rgba(36,39,46,0.75) 0%, rgba(80,120,180,0.18) 80%, rgba(255,255,255,0.10) 100%); /* 渐变+半透明 */
+    padding: 0px;
+    height: 100px;
+    margin: 0;
+    border-radius: 18px; /* 圆角 */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25); /* 阴影 */
+    backdrop-filter: blur(18px) saturate(160%); /* 毛玻璃效果 */
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1.5px solid rgba(41, 41, 41, 0.18); /* 半透明边框 */
+    transition: background 0.3s; /* 渐变动画 */
+    overflow: hidden; /* 防止内容溢出 */
+}
+/* ===============
+   导航内容容器
+   =============== */
+.links-wrapper {
+    /* flex实现上下左右居中 */
+    height: 100%;
+    display: flex;
+    align-items: center;      /* 垂直居中 */
+    justify-content: center;  /* 水平居中 */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+/* ===============
+   导航链接列表
+   =============== */
+#links ul {
+    /* 横向排列，宽度自适应内容 */
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+}
+/* ===============
+   单个导航项
+   =============== */
+.lin {
+    /* 容器，宽度自适应内容，内容上下居中 */
+    display: flex;
+    align-items: center;
+    margin: 0;
+    transition: background 0.2s, box-shadow 0.2s;
+    /* 允许扩散光晕溢出按钮外部 */
+}
+/* ===============
+   通用按钮样式
+   =============== */
+.lin a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 44px;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.55em;
+    letter-spacing: 0.04em;
+    border-radius: 10px;
+    background: transparent;
+    box-shadow: none;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.35s cubic-bezier(.4,1.6,.6,1);
+    position: relative;
+    z-index: 1;
+}
+
+/* ===============
+   通用按钮悬停样式（非专属色）
+   =============== */
+.lin a:hover {
+    background: rgba(120,180,255,0.13);
+    color: #aee6ff;
+    box-shadow: 0 6px 24px 0 rgba(120,180,255,0.18), 0 1.5px 8px 0 rgba(80,120,180,0.10);
+    text-shadow: 0 0 16px #aee6ff55, 0 0 2px #8ec6ff44;
+    filter: blur(0.2px) brightness(1.08) saturate(1.2);
+    transition: background 0.35s cubic-bezier(.4,1.6,.6,1), color 0.25s, box-shadow 0.35s, text-shadow 0.35s, filter 0.35s;
+}
+
+.my .avatar {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 4px 24px #0002, 0 0 0 6px #fff7;
+  margin-bottom: 18px;
+  border: 4px solid #ffd700;
+  background: #232526;
+}
+/* ===============
+   背景墙样式
+   =============== */
+.order-bg-wall {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8vw;
+}
+.order-bg-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2vw;
+  width: 100vw;
+}
+.order-bg-row span {
+  font-family: inherit;
+  font-weight: 900;
+  color: #fff2;
+  letter-spacing: 0.18em;
+  text-shadow: 0 8px 32px #ffd70033, 0 2px 24px #fff7, 0 0 80px #ffd70022;
+  filter: blur(0.5px) brightness(1.1);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.6s, font-size 0.6s;
+}
+
